@@ -1,0 +1,54 @@
+@model IEnumerable<firstMVCPoject.Models.BhaveshSbtransaction>
+
+@{
+    ViewData["Title"] = "AccountDetails";
+}
+
+<h1>AccountDetails of: @ViewBag.CustomerName</h1>
+<h6>Account Number: @ViewBag.AccountNumber and Current Balance is: @ViewBag.CurrentBalance</h6>
+
+<p>
+    <a asp-action="GetAllAccounts">Back</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionType)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.AccountNumber)
+            </th> *@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionType)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.AccountNumber)
+            </td> *@
+            @* <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td> *@
+        </tr>
+}
+    </tbody>
+</table>

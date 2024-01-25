@@ -1,0 +1,25 @@
+@* model - to bind the view to themodel class*@
+
+@model IEnumerable<firstMVCPoject.Models.Employee>
+
+@* @model is a Razor syntax directive used in the view to declare the type of the model that the view expects. @model.project_or_namespacae.model_folder_name.class_name *@
+
+@* <h1>@Model.Eid</h1>
+<h1>@Model.Ename</h1>
+<h1>@Model.Salary</h1> *@
+
+<table class="Employee">
+    <tr>
+        <th>Eid</th>
+        <th>Ename</th>
+        <th>Salary</th>
+    </tr>
+        @foreach(var item in Model){
+            <tr>
+                <td>@item.Eid</td>
+                <td>@item.Ename</td>
+                <td>@item.Salary</td>
+            </tr>
+        }
+    
+</table>

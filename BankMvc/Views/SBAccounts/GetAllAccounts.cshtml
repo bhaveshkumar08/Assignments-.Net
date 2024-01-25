@@ -1,0 +1,58 @@
+@model IEnumerable<firstMVCPoject.Models.BhaveshSbaccount>
+
+@{
+    ViewData["Title"] = "GetAllAccounts";
+}
+
+<h1>GetAllAccounts</h1>
+<h2>Hello @ViewBag.UserEmail</h2>
+
+
+<p>
+    <a asp-action="AddAccount">Create New Account</a>
+</p>
+<p>
+    <a asp-controller="Login" asp-action="Logout">Logout</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CurrentBalance)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentBalance)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditAccountDetails", new { Accno=item.AccountNumber }) |
+                @Html.ActionLink("Details", "AccountDetails", new { Accno=item.AccountNumber }) |
+                @Html.ActionLink("Delete", "DeleteAccount", new { id=item.AccountNumber}) @*here in delete we pass id as default and not like in edit, details because in edit and detail the AccoundNumber is passed to get method only but in delete it is passed to delete's post method as well, as default so other name instead of id the delete post method will not feach it/recives it. *@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
