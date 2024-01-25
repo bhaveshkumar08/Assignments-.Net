@@ -1,0 +1,52 @@
+@model FlightProject.Models.SearchCapture
+
+@{
+    ViewData["Title"] = "SearchFlights";
+}
+
+<h1>SearchFlights</h1>
+
+<h4>>></h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SearchResults">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="origin" class="control-label"></label>
+                @* <input asp-for="origin" class="form-control" /> *@
+                <select asp-for="origin" class ="form-control" asp-items="ViewBag.Origins"></select>
+                <span asp-validation-for="origin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="destination" class="control-label"></label>
+                @* <input asp-for="destination" class="form-control" /> *@
+                <select asp-for="destination" class ="form-control" asp-items="ViewBag.Origins"></select>
+                <span asp-validation-for="destination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="departure" class="control-label"></label>
+                <input asp-for="departure" class="form-control" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" max = "@DateTime.Now.AddDays(5).ToString("yyyy-MM-dd")"/>
+                @* "@DateTime.Now.AddDays(5).ToString("yyyy-MM-DD")" *@
+                <span asp-validation-for="departure" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="seats" class="control-label"></label>
+                <input asp-for="seats" class="form-control" placeholder="Number of Passengers"/>
+                <span asp-validation-for="seats" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="Home">Home</a>
+</div>
+
+<script></script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

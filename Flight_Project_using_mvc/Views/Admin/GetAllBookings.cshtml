@@ -1,0 +1,64 @@
+@model IEnumerable<FlightProject.Models.BBookingDetail>
+
+@{
+    ViewData["Title"] = "GetAllBookings";
+    Layout = "/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>All Bookings</h1>
+
+@* <p>
+    <a asp-action="Create">Create New</a>
+</p> *@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlightId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookedSeats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.FlightType)
+            </th> *@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlightId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookedSeats)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalCost)
+            </td>
+            @* <td>
+                @Html.DisplayFor(modelItem => item.FlightType)
+            </td> *@
+            <td>
+                @Html.ActionLink("Cancel", "CancelBooking", new { id=item.BookingId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

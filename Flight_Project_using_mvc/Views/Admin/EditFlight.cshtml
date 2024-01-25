@@ -1,0 +1,68 @@
+@model FlightProject.Models.BFlight
+
+@{
+    ViewData["Title"] = "EditFlight";
+}
+
+<h1>Edit Flight Details</h1>
+
+<h4>Flight:</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditFlight">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FlightId" class="control-label"></label>
+                <input asp-for="FlightId" class="form-control" readonly/>
+                <span asp-validation-for="FlightId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Origin" class="control-label"></label>
+                <input asp-for="Origin" class="form-control" readonly/>
+                <span asp-validation-for="Origin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Destination" class="control-label"></label>
+                <input asp-for="Destination" class="form-control" readonly/>
+                <span asp-validation-for="Destination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Departure" class="control-label"></label>
+                <input asp-for="Departure" class="form-control" type="date" placeholder="Departure Date"/>
+                <span asp-validation-for="Departure" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Arrival" class="control-label"></label>
+                <input asp-for="Arrival" class="form-control" type="date" placeholder="Arrival Date"/>
+                <span asp-validation-for="Arrival" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlightName" class="control-label"></label>
+                <input asp-for="FlightName" class="form-control" readonly/>
+                <span asp-validation-for="FlightName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cost" class="control-label"></label>
+                <input asp-for="Cost" class="form-control" placeholder="Cost Per Person"/>
+                <span asp-validation-for="Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SeatAvailable" class="control-label"></label>
+                <input asp-for="SeatAvailable" class="form-control" placeholder="Seats Available"/>
+                <span asp-validation-for="SeatAvailable" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="GetAllFlights">Back to Flights List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
